@@ -1,6 +1,7 @@
 package mc.jazhdo;
 
 
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -18,11 +19,15 @@ import org.bukkit.event.block.BlockSpreadEvent;
 import org.bukkit.event.block.EntityBlockFormEvent;
 import org.bukkit.event.block.LeavesDecayEvent;
 import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.vehicle.VehicleDamageEvent;
+import org.bukkit.event.vehicle.VehicleDestroyEvent;
 
 public class LobbyListener implements Listener {
     public LobbyListener() {}
@@ -91,6 +96,11 @@ public class LobbyListener implements Listener {
     public void onCreatureSpawn(CreatureSpawnEvent event) {
         if (!event.isCancelled()) event.setCancelled(true);
     }
+
+    @EventHandler
+    public void onEntityDamage(EntityDamageEvent event) {
+        if (!event.isCancelled()) event.setCancelled(true);
+    }
     
     @EventHandler
     public void onEntityBlockForm(EntityBlockFormEvent event) {
@@ -105,6 +115,12 @@ public class LobbyListener implements Listener {
     @EventHandler
     public void onInventoryOpen(InventoryOpenEvent event) {
         if (!event.isCancelled()) event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void onInventoryInteract(InventoryInteractEvent event) {
+        if (!event.isCancelled()) event.setCancelled(true);
+        if (event.getWhoClicked() instanceof Player player) player.updateInventory();
     }
     
     @EventHandler
@@ -124,6 +140,16 @@ public class LobbyListener implements Listener {
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
+        if (!event.isCancelled()) event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void onVehicleDamage(VehicleDamageEvent event) {
+        if (!event.isCancelled()) event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void onVehicleDestroy(VehicleDestroyEvent event) {
         if (!event.isCancelled()) event.setCancelled(true);
     }
 }
