@@ -1,0 +1,8 @@
+name: LobbyPlugin
+version: 0.1.0
+main: mc.jazhdo.LobbyPlugin
+description: The plugin used in the Lobby Server of JazhdoMC.
+author: Jazhdo
+website: https://github.com/jazhdomc/LobbyPlugin
+load: POSTWORLD
+prefix: LobbyPlugin
