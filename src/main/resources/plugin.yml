@@ -1,8 +1,24 @@
 name: LobbyPlugin
-version: 0.1.0
+version: 0.1.3
 main: mc.jazhdo.LobbyPlugin
 description: The plugin used in the Lobby Server of JazhdoMC.
 author: Jazhdo
 website: https://github.com/jazhdomc/LobbyPlugin
-load: POSTWORLD
-prefix: LobbyPlugin
+
+commands:
+  setspawn:
+    description: Sets the spawn to your current location
+    usage: /setspawn
+    permission: lobby.change
+  spawn:
+    description: Teleports you to the spawn location
+    usage: /spawn
+    permission: lobby.spawn
+
+permissions:
+  lobby.spawn:
+    description: Use the /spawn command
+    default: true
+  lobby.change:
+    description: Change anything in the server
+    default: op
